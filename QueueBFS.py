@@ -5,8 +5,9 @@
 from Node import Node
 from State import State
 from collections import deque
+from classmates import *
 
-def performQueueBFS():
+def BFS_dongli(graph, initial, goal):
     """
     This function performs BFS search using a queue
     """
@@ -15,7 +16,7 @@ def performQueueBFS():
     #since it is a graph, we create visited list
     visited = [] 
     #create root node
-    initialState = State()
+    initialState = State(initial)
     root = Node(initialState)
     #add to queue and visited list
     queue.append(root)    
@@ -29,7 +30,7 @@ def performQueueBFS():
         print (("-- dequeue --"), currentNode.state.name)
         
         #check if this is goal state
-        if currentNode.state.checkGoalState():
+        if currentNode.state.checkGoalState(goal):
             print ("reached goal state")
             #print the path
             print ("----------------------")
@@ -37,7 +38,7 @@ def performQueueBFS():
             currentNode.printPath()
             break           
         #get the child nodes 
-        childStates = currentNode.state.successorFunction()
+        childStates = currentNode.state.successorFunction(graph)
         for childState in childStates:
             
             childNode = Node(State(childState))
@@ -57,4 +58,4 @@ def performQueueBFS():
     print ("Tree")
     root.printTree()
     
-performQueueBFS()
+BFS_dongli(relationships, 'Frank', 'Ema')

@@ -2,8 +2,6 @@
 @author: Devangini Patel
 '''
 
-from classmates import *
-
 class State:
     '''
     This class retrieves state information for social connection feature
@@ -15,26 +13,18 @@ class State:
             self.name = self.getInitialState()
         else:
             self.name = name
-    
-    def getInitialState(self):
-        """
-        This method returns me.
-        """
-        initialState = "Dongli"
-        return initialState
-
-
-    def successorFunction(self):
+        
+    def successorFunction(self, graph):
         """
         This is the successor function. It finds all the persons connected to the
         current person
         """
-        return relationships[self.name]
+        return graph[self.name]
         
         
-    def checkGoalState(self):
+    def checkGoalState(self, goal):
         """
         This method checks whether the person is Jill.
         """ 
         #check if the person's name is Jill
-        return self.name == "Jill"
+        return self.name == goal
