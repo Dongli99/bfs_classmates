@@ -11,6 +11,15 @@ def BFS_dongli(graph, initial, goal):
     """
     This function performs BFS search using a queue
     """
+    '''
+    Handel the arguments errors  
+    '''
+    if graph is None:
+        print("Error: The graph is not provided.")
+        return
+    if initial not in graph or goal not in graph:
+        print("Error: One or both of the passed names do not exist in the graph.")
+        return
     #create queue
     queue = deque([]) 
     #since it is a graph, we create visited list
@@ -21,6 +30,7 @@ def BFS_dongli(graph, initial, goal):
     #add to queue and visited list
     queue.append(root)    
     visited.append(root.state.name)
+    reached = False
     # check if there is something in queue to dequeue
     while len(queue) > 0:
         
@@ -36,6 +46,7 @@ def BFS_dongli(graph, initial, goal):
             print ("----------------------")
             print ("Path")
             currentNode.printPath()
+            reached = True
             break           
         #get the child nodes 
         childStates = currentNode.state.successorFunction(graph)
@@ -55,7 +66,11 @@ def BFS_dongli(graph, initial, goal):
                 queue.append(childNode)                        
     #print tree
     print ("----------------------")
-    print ("Tree")
-    root.printTree()
+    if not reached:
+        print(f'Sorry, {goal} cannot be reached.')
+    else:
+        print ("Tree")
+        root.printTree()
+        
     
-BFS_dongli(relationships, 'Frank', 'Ema')
+BFS_dongli(relationships, 'Frank', 'Dolly')

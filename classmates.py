@@ -14,5 +14,3 @@ relationships['Bob'] = ['Adam', 'Ema', 'Dolly']
 relationships['Dolly'] = ['Ema', 'Bob']
 relationships['Frank'] = ['Dongli']
 relationships['George'] = ['Dongli']
-
-print(relationships)
