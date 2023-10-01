@@ -11,9 +11,7 @@ def BFS_dongli(graph, initial, goal):
     """
     This function performs BFS search using a queue
     """
-    '''
-    Handel the arguments errors  
-    '''
+    # Handel the arguments errors  
     if graph is None:
         print("Error: The graph is not provided.")
         return
@@ -41,7 +39,7 @@ def BFS_dongli(graph, initial, goal):
         
         #check if this is goal state
         if currentNode.state.checkGoalState(goal):
-            print ("reached goal state")
+            print ("\nreached goal state")
             #print the path
             print ("----------------------")
             print ("Path")
